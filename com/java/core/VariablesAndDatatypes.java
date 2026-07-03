@@ -51,8 +51,9 @@ public class VariablesAndDatatypes {
         System.out.println("Character");
         System.out.println("Bytes: " + Character.BYTES);
         System.out.println("Bits:" + Character.SIZE);
-        System.out.println(Character.MIN_VALUE);
-        System.out.println(Character.MAX_VALUE);
+//        typecast to get min and max values because these are unicode values
+        System.out.println((int) Character.MIN_VALUE);
+        System.out.println((int) Character.MAX_VALUE);
         System.out.println();
 
         System.out.println("Boolean");
