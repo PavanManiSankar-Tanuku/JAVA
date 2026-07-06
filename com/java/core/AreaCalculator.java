@@ -28,7 +28,7 @@ public class AreaCalculator {
             System.err.println("Invalid input. Radius must be a positive number.");
             return -1;
         }
-        return Math.P * (radius * radius);
+        return Math.PI * (radius * radius);
     }
 
     static void main(String[] args) {
