@@ -4,6 +4,7 @@ public class Student {
     private String rollNumber;
     private String name;
     private byte age;
+    private String department;
     private float cgpa;
     private static String collegeName;
     private static int studentCount;
@@ -23,7 +24,6 @@ public class Student {
         this.name = name;
         this.age = age;
         this.cgpa = cgpa;
-        studentCount++;
     }
 
     // setters and getters
@@ -37,6 +37,10 @@ public class Student {
 
     public void setAge(byte age) {
         this.age = age;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
     public void setCGPA(float cgpa) {
@@ -63,6 +67,9 @@ public class Student {
         return age;
     }
 
+    public String getDepartment() {
+        return department;
+    }
     public float getCgpa() {
         return cgpa;
     }
