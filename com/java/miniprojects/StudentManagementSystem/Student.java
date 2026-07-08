@@ -19,10 +19,11 @@ public class Student {
     }
 
     // parameterised constructor
-    public Student(String rollNumber, String name, byte age, float cgpa) {
+    public Student(String rollNumber, String name, byte age, String department , float cgpa) {
         this.rollNumber = rollNumber;
         this.name = name;
         this.age = age;
+        this.department = department;
         this.cgpa = cgpa;
     }
 
