@@ -25,24 +25,27 @@ public class StudentService {
         System.out.println("Roll Number format: yydpcxxx");
         System.out.println("yy: last two digits of year of admission,\ndpc: department code,\nxxx: unique number");
         String rollNumber = scanner.next();
-        boolean isRollNumberValid = studentRollNumberValidation(rollNumber);
+        boolean isAdmissionYearValid = rollNumberLengthAndAdmissionYearValidation(rollNumber);
         // If roll number is valid, continue reading remaining details.
-        if(isRollNumberValid) {
+        if(isAdmissionYearValid) {
+            boolean isDepartmentValid = rollNumberDepartmentValidation(rollNumber);
+            if(isDepartmentValid) {
 
+            }
         }
 
     }
 
     /*
     * studentRollNumberValidation() validate the student roll number.
-    * The roll number should be 7 characters long.
+    * The roll number should be 8 characters long.
     * The first two characters should be digits.
     * Assumes rollNumber is non-null.
     * */
-    private boolean studentRollNumberValidation(String rollNumber) {
+    private boolean rollNumberLengthAndAdmissionYearValidation(String rollNumber) {
 
-        if(rollNumber.length() != 7) {
-            System.out.println("Invalid Roll Number. Roll Number should be 7 characters long");
+        if(rollNumber.length() != 8) {
+            System.out.println("Invalid Roll Number. Roll Number should be 8 characters long");
             return false;
         } else if(!Character.isDigit(rollNumber.charAt(0))) {
             System.out.println("Invalid Roll Number. First character should be a digit.");
@@ -54,4 +57,39 @@ public class StudentService {
         return true;
     }
 
+    /*
+    * rollNumberDepartmentValidation() validates the student roll number
+    * It handles the Department Codes validation, that only the college accepts.
+    * */
+    // Valid department codes offered by the college
+    private static final String[] VALID_DEPARTMENTS = new String[] { "CST", "CSE", "ITE", "AME", "EEE", "ECE", "ECT", "MEC", "CIV", "CIC" };
+
+    private boolean rollNumberDepartmentValidation(String rollNumber) {
+
+        if(!Character.isLetter(rollNumber.charAt(2))) {
+            System.out.println("Invalid Roll Number. Please enter valid Department Characters.");
+            return false;
+        } else if (!Character.isLetter(rollNumber.charAt(3))) {
+            System.out.println("Invalid Roll Number. Please enter valid Department Characters.");
+            return false;
+        } else if(!Character.isLetter(rollNumber.charAt(4))) {
+            System.out.println("Invalid Roll Number. Please enter valid Department Characters.");
+            return false;
+        }
+
+        rollNumber = rollNumber.toUpperCase();
+        String userDep = rollNumber.substring(2, 5);
+        boolean isValidDepartment = false;
+        for (String validDepartment : VALID_DEPARTMENTS) {
+            if (userDep.equals(validDepartment)) {
+                isValidDepartment = true;
+                break;
+            }
+        }
+        if (!isValidDepartment) {
+            System.out.println("Invalid Roll Number. Please enter valid Department Codes.");
+        }
+        return isValidDepartment;
+    }
 }
+
