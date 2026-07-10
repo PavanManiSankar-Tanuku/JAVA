@@ -7,7 +7,6 @@ public class Student {
     private String department;
     private float cgpa;
     private static String collegeName;
-    private static int studentCount;
 
     static {
         collegeName = "Akhil Institute of Technology and Engineering";
@@ -50,10 +49,6 @@ public class Student {
 
     public static String getCollegeName() {
         return collegeName;
-    }
-
-    public static int getStudentCount() {
-        return studentCount;
     }
 
     public String getRollNumber() {
