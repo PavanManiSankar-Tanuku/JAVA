@@ -10,7 +10,7 @@ public class StudentService {
     */
     private final Student[] students = new Student[100];
 
-    // scanner is created to ask user where to manupulate the object
+    // scanner is created to ask user where to manipulate the object
     private final Scanner scanner = new Scanner(System.in);
 
     /*
@@ -19,14 +19,14 @@ public class StudentService {
     * If the validation is failed, pass the error message
     * ErrorMessage: "Student cannot be added. Required details are missing or invalid."
     * */
-    private void addStudent() {
+    public void addStudent() {
 
         System.out.println("Enter Roll Number:");
-        System.out.println("Roll Number format: yydcxxx");
-        System.out.println("yy: last two digits of year of admission,\ndc: department code,\nxxx: unique number");
+        System.out.println("Roll Number format: yydpcxxx");
+        System.out.println("yy: last two digits of year of admission,\ndpc: department code,\nxxx: unique number");
         String rollNumber = scanner.next();
         boolean isRollNumberValid = studentRollNumberValidation(rollNumber);
-        // If Admission Year is valid, check the department code validation
+        // If roll number is valid, continue reading remaining details.
         if(isRollNumberValid) {
 
         }
