@@ -5,7 +5,6 @@ public class Student {
     private String name;
     private byte age;
     private String department;
-    private float cgpa;
     private static String collegeName;
 
     static {
@@ -18,12 +17,11 @@ public class Student {
     }
 
     // parameterised constructor
-    public Student(String rollNumber, String name, byte age, String department , float cgpa) {
+    public Student(String rollNumber, String name, byte age, String department) {
         this.rollNumber = rollNumber;
         this.name = name;
         this.age = age;
         this.department = department;
-        this.cgpa = cgpa;
     }
 
     // setters and getters
@@ -41,10 +39,6 @@ public class Student {
 
     public void setDepartment(String department) {
         this.department = department;
-    }
-
-    public void setCGPA(float cgpa) {
-        this.cgpa = cgpa;
     }
 
     public static String getCollegeName() {
@@ -65,9 +59,6 @@ public class Student {
 
     public String getDepartment() {
         return department;
-    }
-    public float getCgpa() {
-        return cgpa;
     }
 
 }
