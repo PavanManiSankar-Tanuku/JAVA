@@ -29,7 +29,9 @@ public class StudentService {
         String studentDepartment = scanner.nextLine();
         // if block validates the Student Name
         if(studentNameValidation(studentName)) {
+            if(studentAgeValidation(studentName)) {
 
+            }
         }
 
     }
@@ -59,6 +61,18 @@ public class StudentService {
         return isNameValid;
     }
 
+    /*
+    * studentAgeValidation() handles the student age:
+    * 1. Student age should be greater than or equal to 17
+    * 2. Student age should be less than or equal to 22
+    * */
+    private boolean studentAgeValidation(byte studentAge) {
+        if(studentAge < 17 || studentAge > 22) {
+            System.out.println("Student age should be between 17 and 22.");
+            return false;
+        }
+        return true;
+    }
 
 }
 
