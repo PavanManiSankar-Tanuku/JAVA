@@ -14,82 +14,51 @@ public class StudentService {
     private final Scanner scanner = new Scanner(System.in);
 
     /*
-    * addStudent() validate the student details to add new student.
-    * After validation the new student will be added to the students array.
-    * If the validation is failed, pass the error message
-    * ErrorMessage: "Student cannot be added. Required details are missing or invalid."
+    * addStudent() read's the student details:
+    * 1. Name
+    * 2. Age
+    * 3. Department
     * */
     public void addStudent() {
+        System.out.print("Enter Student Name: ");
+        String studentName = scanner.nextLine();
+        System.out.print("Enter Student Age: ");
+        byte studentAge = scanner.nextByte();
+        scanner.nextLine(); // consume the newline character
+        System.out.print("Enter Student Department: ");
+        String studentDepartment = scanner.nextLine();
+        // if block validates the Student Name
+        if(studentNameValidation(studentName)) {
 
-        System.out.println("Enter Roll Number:");
-        System.out.println("Roll Number format: yydpcxxx");
-        System.out.println("yy: last two digits of year of admission,\ndpc: department code,\nxxx: unique number");
-        String rollNumber = scanner.next();
-        boolean isAdmissionYearValid = rollNumberLengthAndAdmissionYearValidation(rollNumber);
-        // If roll number is valid, continue reading remaining details.
-        if(isAdmissionYearValid) {
-            boolean isDepartmentValid = rollNumberDepartmentValidation(rollNumber);
-            if(isDepartmentValid) {
-
-            }
         }
 
     }
 
     /*
-    * studentRollNumberValidation() validate the student roll number.
-    * The roll number should be 8 characters long.
-    * The first two characters should be digits.
-    * Assumes rollNumber is non-null.
+    * studentNameValidation() handles the validation of the student details:
+    * 1. Name should not be empty
+    * 2. Name should not contain special character
+    * 3. Name should not contain digits
+    * 4. Name should have the minimum length
+    * 5. Name should have the maximum length
     * */
-    private boolean rollNumberLengthAndAdmissionYearValidation(String rollNumber) {
-
-        if(rollNumber.length() != 8) {
-            System.out.println("Invalid Roll Number. Roll Number should be 8 characters long");
-            return false;
-        } else if(!Character.isDigit(rollNumber.charAt(0))) {
-            System.out.println("Invalid Roll Number. First character should be a digit.");
-            return false;
-        } else if(!Character.isDigit(rollNumber.charAt(1))) {
-            System.out.println("Invalid Roll Number. Second character should be a digit.");
-            return false;
-        }
-        return true;
-    }
-
-    /*
-    * rollNumberDepartmentValidation() validates the student roll number
-    * It handles the Department Codes validation, that only the college accepts.
-    * */
-    // Valid department codes offered by the college
-    private static final String[] VALID_DEPARTMENTS = new String[] { "CST", "CSE", "ITE", "AME", "EEE", "ECE", "ECT", "MEC", "CIV", "CIC" };
-
-    private boolean rollNumberDepartmentValidation(String rollNumber) {
-
-        if(!Character.isLetter(rollNumber.charAt(2))) {
-            System.out.println("Invalid Roll Number. Please enter valid Department Characters.");
-            return false;
-        } else if (!Character.isLetter(rollNumber.charAt(3))) {
-            System.out.println("Invalid Roll Number. Please enter valid Department Characters.");
-            return false;
-        } else if(!Character.isLetter(rollNumber.charAt(4))) {
-            System.out.println("Invalid Roll Number. Please enter valid Department Characters.");
-            return false;
-        }
-
-        rollNumber = rollNumber.toUpperCase();
-        String userDep = rollNumber.substring(2, 5);
-        boolean isValidDepartment = false;
-        for (String validDepartment : VALID_DEPARTMENTS) {
-            if (userDep.equals(validDepartment)) {
-                isValidDepartment = true;
-                break;
+    private boolean studentNameValidation(String studentName) {
+        boolean isNameValid = true;
+        if(studentName.length() >= 5 && studentName.length() <= 20) {
+            for(char ch: studentName.toCharArray()) {
+                if(!Character.isLetter(ch) && ch != ' ') {
+                    isNameValid = false;
+                    System.out.println("Name should not contain special characters or digits.");
+                    break;
+                }
             }
+        } else {
+            isNameValid = false;
+            System.out.println("Name should have a minimum length of 5 and a maximum length of 20.");
         }
-        if (!isValidDepartment) {
-            System.out.println("Invalid Roll Number. Please enter valid Department Codes.");
-        }
-        return isValidDepartment;
+        return isNameValid;
     }
+
+
 }
 
