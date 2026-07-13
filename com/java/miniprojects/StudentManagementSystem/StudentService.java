@@ -29,8 +29,13 @@ public class StudentService {
         String studentDepartment = scanner.nextLine();
         // if block validates the Student Name
         if(studentNameValidation(studentName)) {
-            if(studentAgeValidation(studentName)) {
+            // if studentAgeValidation() is true, validate the Department
+            if(studentAgeValidation(studentAge)) {
+                // if student department is valid, take admission by generating hall-ticket number
+                // and store the student details in the students array
+                if(studentDepartmentValidation(studentDepartment)) {
 
+                }
             }
         }
 
@@ -74,5 +79,26 @@ public class StudentService {
         return true;
     }
 
+    /*
+    * studentDepartmentValidation() handles the student department:
+    * college take's the admission only the branch's active in the college
+    * */
+    private static final String[] COLLEGE_DEPARTMENTS = {
+            "CST", "CSE", "ECE", "ECT", "ITE", "AIE", "EEE", "CVE", "MEC"
+    };
+    private boolean studentDepartmentValidation(String studentDepartment) {
+        boolean isDepartmentValid = false;
+        studentDepartment = studentDepartment.toUpperCase();
+        for(String dept: COLLEGE_DEPARTMENTS) {
+            if(dept.equals(studentDepartment)) {
+                isDepartmentValid = true;
+                break;
+            }
+        }
+        if(!isDepartmentValid) {
+            System.out.println("Invalid department. Please enter a valid department.");
+        }
+        return isDepartmentValid;
+    }
 }
 
