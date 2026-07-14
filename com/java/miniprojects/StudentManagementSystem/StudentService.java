@@ -31,6 +31,7 @@ public class StudentService {
     * 1. Name
     * 2. Age
     * 3. Department
+    * It handles validation and generates the Roll Number to new Admission
     * */
     public void addStudent() {
         System.out.print("Enter Student Name: ");
