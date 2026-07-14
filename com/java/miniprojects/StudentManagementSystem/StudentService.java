@@ -6,7 +6,7 @@ import java.time.LocalDate;
 public class StudentService {
 
     // The college can take max MAX_COLLEGE_INTAKE students
-    private static final byte MAX_COLLEGE_INTAKE = (byte) 180;
+    private static final int MAX_COLLEGE_INTAKE = 180;
 
     /*
      The students array  set to private, which can only access to StudentService class,
@@ -83,6 +83,8 @@ public class StudentService {
                     for(int i = 0; i < students.length; i++) {
                         if(students[i] == null) {
                             students[i] = student;
+                            System.out.println("Admission Successful!");
+                            System.out.println("Student Roll Number: " + student.getRollNumber());
                             break;
                         }
                     }
