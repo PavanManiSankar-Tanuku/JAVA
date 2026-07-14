@@ -25,10 +25,6 @@ public class Student {
     }
 
     // setters and getters
-    public static void setCollegeName(String collegeName) {
-        Student.collegeName = collegeName;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
