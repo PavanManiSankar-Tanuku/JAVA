@@ -5,7 +5,7 @@ public class Student {
     private String name;
     private byte age;
     private String department;
-    private static String collegeName;
+    private final static String collegeName;
 
     static {
         collegeName = "Akhil Institute of Technology and Engineering";

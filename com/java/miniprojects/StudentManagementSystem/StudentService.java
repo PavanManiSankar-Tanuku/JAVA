@@ -1,5 +1,6 @@
 package com.java.miniprojects.StudentManagementSystem;
 
+import java.util.Arrays;
 import java.util.Scanner;
 import java.time.LocalDate;
 
@@ -38,6 +39,7 @@ public class StudentService {
         String studentName = scanner.nextLine();
         System.out.print("Enter Student Age: ");
         byte studentAge = scanner.nextByte();
+        System.out.println("College Offering Departments: " + Arrays.toString(StudentService.COLLEGE_DEPARTMENTS));
         scanner.nextLine(); // consume the newline character
         System.out.print("Enter Student Department: ");
         String studentDepartment = scanner.nextLine();
@@ -148,5 +150,37 @@ public class StudentService {
         }
         return isDepartmentValid;
     }
+
+    /*
+    * viewStudents handle the display all the students that are admitted
+    * If no student is admitted, it displays the respective message
+    * */
+    public void viewStudents() {
+        int countStudents = 0;
+        if(students[0] == null) {
+            System.out.println("No Students are Admitted Yet!");
+            return;
+        }
+        System.out.printf("%-15s %-20s %-5s %-5s\n", "Roll Number", "Name", "Age", "Department");
+        for(Student student: students) {
+            if(student == null) break;
+            System.out.printf("%-15s %-20s %-5d %-5s\n", student.getRollNumber(), student.getName(), student.getAge(), student.getDepartment());
+            countStudents++;
+        }
+        System.out.println("Total students: " + countStudents);
+    }
+
+    public void searchStudent() {
+        System.out.println("Search Student Feature under development");
+    }
+
+    public void updateStudent() {
+        System.out.println("Update Student Feature under development");
+    }
+
+    public void deleteStudent() {
+        System.out.println("Delete Student Feature under development");
+    }
+
 }
 
